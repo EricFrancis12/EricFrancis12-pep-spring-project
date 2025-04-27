@@ -12,10 +12,10 @@ import com.example.entity.Account;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Integer> {
 
-    @Query(value = "FROM account a WHERE a.username = :username", nativeQuery = true)
+    @Query("FROM Account a WHERE a.username = :username")
     Optional<Account> findByUsername(@Param("username") String username);
 
-    @Query(value = "FROM account a WHERE a.username = :username AND a.password = :password", nativeQuery = true)
+    @Query("FROM Account a WHERE a.username = :username AND a.password = :password")
     Optional<Account> findByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 
 }
