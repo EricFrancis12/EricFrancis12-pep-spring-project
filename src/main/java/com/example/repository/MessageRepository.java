@@ -13,11 +13,11 @@ import com.example.entity.Message;
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Integer> {
 
-    @Query(value = "FROM message m UPDATE m.messageText = :messageText WHERE m.messageId = :messageId", nativeQuery = true)
+    @Query(value = "FROM message UPDATE messageText = :messageText WHERE messageId = :messageId", nativeQuery = true)
     Optional<Message> updateMessageTextById(@Param("messageId") int messageId,
             @Param("messageText") String messageText);
 
-    @Query(value = "FROM message m WHERE m.postedBy = :accountId", nativeQuery = true)
+    @Query(value = "FROM message WHERE postedBy = :accountId", nativeQuery = true)
     List<Message> getMessagesByAccountId(@Param("accountId") int accountId);
 
 }
