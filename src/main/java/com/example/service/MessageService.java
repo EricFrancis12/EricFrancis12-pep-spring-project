@@ -37,11 +37,11 @@ public class MessageService {
     }
 
     public Message updateMessageTextById(int messageId, String messageText) throws MessageNotFoundException {
-        Optional<Message> optionalMessage = this.messageRepository.updateMessageTextById(messageId, messageText);
-        if (optionalMessage.isEmpty()) {
+        int n = this.messageRepository.updateMessageTextById(messageId, messageText);
+        if (n == 0) {
             throw MessageNotFoundException.fromId(messageId);
         }
-        return optionalMessage.get();
+        return this.getMessageById(messageId);
     }
 
     public Message deleteMessageById(int messageId) throws MessageNotFoundException {
