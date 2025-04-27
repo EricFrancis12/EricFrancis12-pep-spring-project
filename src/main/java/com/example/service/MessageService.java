@@ -13,6 +13,7 @@ import com.example.repository.MessageRepository;
 
 @Service
 public class MessageService {
+
     private final MessageRepository messageRepository;
 
     @Autowired
@@ -58,4 +59,5 @@ public class MessageService {
         this.messageRepository.deleteById(messageId);
         return optionalMessage.get();
     }
+
 }

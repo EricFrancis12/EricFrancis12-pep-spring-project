@@ -9,6 +9,7 @@ import com.example.repository.AccountRepository;
 
 @Service
 public class AccountService {
+
     private final AccountRepository accountRepository;
 
     @Autowired
@@ -34,4 +35,5 @@ public class AccountService {
     public boolean usernameExists(String username) {
         return !accountRepository.findByUsername(username).isEmpty();
     }
+
 }
