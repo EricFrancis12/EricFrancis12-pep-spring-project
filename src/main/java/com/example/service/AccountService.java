@@ -18,22 +18,23 @@ public class AccountService {
     }
 
     public Account insertAccount(Account account) {
-        return accountRepository.save(account);
+        return  this.accountRepository.save(account);
     }
 
     public Account getAccountByUsername(String username) throws AccountNotFoundException {
-        return accountRepository.findByUsername(username)
+        return  this.accountRepository
+                .findByUsername(username)
                 .orElseThrow(() -> AccountNotFoundException.fromUsername(username));
     }
 
     public Account getAccountByUsernameAndPassword(String username, String password) throws AccountNotFoundException {
-        return accountRepository.findByUsernameAndPassword(username, password)
-                .orElseThrow(() -> AccountNotFoundException
-                        .fromUsernameAndPassword(username, password));
+        return  this.accountRepository
+                .findByUsernameAndPassword(username, password)
+                .orElseThrow(() -> AccountNotFoundException.fromUsernameAndPassword(username, password));
     }
 
     public boolean usernameExists(String username) {
-        return !accountRepository.findByUsername(username).isEmpty();
+        return ! this.accountRepository.findByUsername(username).isEmpty();
     }
 
 }

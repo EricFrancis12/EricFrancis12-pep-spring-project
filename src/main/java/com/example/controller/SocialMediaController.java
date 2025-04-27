@@ -114,8 +114,7 @@ public class SocialMediaController {
     }
 
     @PatchMapping("/messages/{messageId}")
-    public ResponseEntity<Integer> handleUpdateMessageById(@PathVariable("messageId") int messageId,
-            @RequestBody Message message) {
+    public ResponseEntity<Integer> handleUpdateMessageById(@PathVariable("messageId") int messageId, @RequestBody Message message) {
         String messageText = message.getMessageText();
         if (!MessageUtil.isValidMessageText(messageText)) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();

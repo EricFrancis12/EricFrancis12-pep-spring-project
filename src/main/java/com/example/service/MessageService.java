@@ -34,7 +34,8 @@ public class MessageService {
     }
 
     public Message getMessageById(int messageId) throws MessageNotFoundException {
-        return this.messageRepository.findById(messageId)
+        return this.messageRepository
+                .findById(messageId)
                 .orElseThrow(() -> MessageNotFoundException.fromId(messageId));
     }
 
