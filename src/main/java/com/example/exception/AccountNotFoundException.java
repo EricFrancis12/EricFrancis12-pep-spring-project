@@ -5,6 +5,10 @@ public class AccountNotFoundException extends ResourceNotFoundException {
         super(message);
     }
 
+    public static AccountNotFoundException fromId(int accountId) {
+        return new AccountNotFoundException(String.format("Account not found with ID (%d)", accountId));
+    }
+
     public static AccountNotFoundException fromUsername(String username) {
         return new AccountNotFoundException(String.format("Account not found with username (%s)",
                 username));

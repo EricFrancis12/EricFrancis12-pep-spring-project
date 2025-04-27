@@ -96,6 +96,7 @@ public class SocialMediaController {
         try {
             Message message = messageService.getMessageById(messageId);
             return ResponseEntity.ok(message);
+
         } catch (MessageNotFoundException ex) {
             return ResponseEntity.ok().build();
         }
@@ -106,6 +107,7 @@ public class SocialMediaController {
         try {
             messageService.deleteMessageById(messageId);
             return ResponseEntity.ok(1);
+
         } catch (MessageNotFoundException ex) {
             return ResponseEntity.ok().build();
         }
@@ -122,6 +124,7 @@ public class SocialMediaController {
         try {
             messageService.updateMessageTextById(messageId, messageText);
             return ResponseEntity.ok(1);
+
         } catch (MessageNotFoundException ex) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }

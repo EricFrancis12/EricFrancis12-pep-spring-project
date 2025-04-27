@@ -21,4 +21,8 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
 
     @Query("FROM Message m WHERE m.postedBy = :accountId")
     List<Message> getMessagesByAccountId(@Param("accountId") int accountId);
+
+    @Query("SELECT COUNT(a) > 0 FROM Account a WHERE a.accountId = :accountId")
+    boolean accountIdExists(@Param("accountId") int accountId);
+
 }

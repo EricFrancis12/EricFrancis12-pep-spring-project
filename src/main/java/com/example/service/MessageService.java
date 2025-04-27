@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.entity.Message;
+import com.example.exception.AccountNotFoundException;
 import com.example.exception.MessageNotFoundException;
 import com.example.repository.MessageRepository;
 
@@ -19,7 +20,11 @@ public class MessageService {
         this.messageRepository = messageRepository;
     }
 
-    public Message insertMessage(Message message) {
+    public Message insertMessage(Message message) throws AccountNotFoundException {
+        int accountId = message.getPostedBy();
+        if (!this.messageRepository.accountIdExists(accountId)) {
+            throw AccountNotFoundException.fromId(accountId);
+        }
         return this.messageRepository.save(message);
     }
 
