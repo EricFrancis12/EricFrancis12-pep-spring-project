@@ -132,4 +132,5 @@ public class SocialMediaController {
         List<Message> messages = messageService.getMessagesByAccountId(accountId);
         return ResponseEntity.ok(messages);
     }
+
 }

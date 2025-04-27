@@ -6,8 +6,7 @@ public class MessageNotFoundException extends ResourceNotFoundException {
     }
 
     public static MessageNotFoundException fromId(int messageId) {
-        return (MessageNotFoundException) ResourceNotFoundException.format("Message not found with ID (%d)",
-                messageId);
+        return new MessageNotFoundException(String.format("Message not found with ID (%d)", messageId));
     }
 
 }
